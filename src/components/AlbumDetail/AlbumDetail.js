@@ -1,64 +1,31 @@
 import './AlbumDetail.css';
-import { useEffect, useState, useCallback, useRef } from "react";
+import { useEffect, useState } from "react";
 import axios from 'axios'
 
 const AlbumDetail =  () => {
-  const loader = useRef(null);
+
   const [albuminfo, setAlbumInfo] = useState([])
-  const [filteredAlbumInfo, setFilteredAlbumInfo] = useState([])
-
-
-  const handleObserver = useCallback((entries) => {
-    const target = entries[0];
-    if (target.isIntersecting) {
-      // setPage((prev) => prev + 1);
-       if( filteredAlbumInfo.length !== albuminfo) {
-        //set extra album info from current album info list
-        let filteredData = albuminfo.slice(0, albuminfo.length + 10)
-        setFilteredAlbumInfo([...filteredData]) 
-      }
-    }
-  }, []);
 
   useEffect(() => {
-    const option = {
-      root: null,
-      rootMargin: "20px",
-      threshold: 0
-    };
-    const observer = new IntersectionObserver(handleObserver, option);
-    if (loader.current) observer.observe(loader.current);
+    axios.get('https://jsonplaceholder.typicode.com/photos?albumId=1')
+    .then(res => {
+      if(res.data && res.data.length > 0) {
+        setAlbumInfo(res.data)
+      }
 
-   if(albuminfo && albuminfo.length === 0) {
-      axios.get('https://jsonplaceholder.typicode.com/photos?albumId=1')
-      .then(res => {
-        if(res.data && res.data.length > 0) {
-          setAlbumInfo(res.data)
-        }
-
-      })
-      .catch((err) => {
-        console.log(err)
-      })
-   }
-  //  else if( filteredAlbumInfo.length !== albuminfo) {
-  //    //set extra album info from current album info list
-  //    let filteredData = albuminfo.slice(0, albuminfo.length + 10)
-  //    setFilteredAlbumInfo([...filteredData]) 
-  //  }
-
+    })
+    .catch((err) => {
+      console.log(err)
+    })
   
-  }, [handleObserver])
-
-
-
+  }, [])
   
   return (
     <>
       {albuminfo && albuminfo.length > 0 && (
-        albuminfo.map((album, index) => {
+        albuminfo.map(album => {
           return (
-          <div className="album-info-container" key={index}>
+          <div className="album-info-container">
             <img className="album-cover" src={album.thumbnailUrl} alt={album.title} />
             <h4>
               {album.title}

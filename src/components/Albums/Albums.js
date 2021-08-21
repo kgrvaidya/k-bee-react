@@ -5,23 +5,13 @@ import axios from 'axios'
 import { AlbumDetail } from '../index';
 
 
-const AlbumsList =  () => {
+const AlbumsList =  (props) => {
+  console.log(props)
 
-  const [albums, setAlbums] = useState([])
+  let albums = props.albums
 
-  useEffect(() => {
-    axios.get('https://jsonplaceholder.typicode.com/albums')
-    .then(res => {
-      if(res.data && res.data.length > 0) {
-        setAlbums(res.data)
-      }
+  // const [albums, setAlbums] = useState([])
 
-    })
-    .catch((err) => {
-      console.log(err)
-    })
-  
-  }, [])
   return (
     <div className="album-row">
       <Suspense fallback={<div>Loading</div>}>
