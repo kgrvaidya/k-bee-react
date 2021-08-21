@@ -1,0 +1,15 @@
+.album-row {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    border : 1px solid black;
+}
+
+.album-header {
+    padding: 10px;
+    border-bottom: 1px solid gray;
+}
+.album-detail {
+    display: flex;
+    overflow: auto;
+}
