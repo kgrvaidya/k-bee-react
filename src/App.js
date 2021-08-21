@@ -9,7 +9,7 @@ function App() {
 const [page, setPage] = useState(1);
 const { loading, error, formattedList = [] } = useFetch(page, 'https://jsonplaceholder.typicode.com/albums');
 
-const loader = useRef(null);
+const row = useRef(null);
 
 const handleObserver = useCallback((entries) => {
   const target = entries[0];
@@ -25,7 +25,7 @@ useEffect(() => {
     threshold: 0
   };
   const observer = new IntersectionObserver(handleObserver, option);
-  if (loader.current) observer.observe(loader.current);
+  if (row.current) observer.observe(row.current);
 }, [handleObserver]);
 
   return (
@@ -35,7 +35,7 @@ useEffect(() => {
       </Suspense>
       {loading && <p>Loading...</p>}
       {error && <p>Error!</p>}
-      <div ref={loader} />
+      <div ref={row} />
     </div>
   );
 }

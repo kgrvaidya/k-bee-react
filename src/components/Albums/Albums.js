@@ -1,16 +1,12 @@
 import './Albums.css';
-import React, { Suspense, useEffect, useState } from "react";
-import axios from 'axios'
+import React, { Suspense} from "react";
 
 import { AlbumDetail } from '../index';
-
 
 const AlbumsList =  (props) => {
   console.log(props)
 
   let albums = props.albums
-
-  // const [albums, setAlbums] = useState([])
 
   return (
     <div className="album-row">
