@@ -10,15 +10,15 @@ const AlbumsList =  (props) => {
 
   return (
     <div className="album-row">
-      <Suspense fallback={<div>Loading</div>}>
+      <Suspense fallback={<div>Loading...</div>}>
       {albums && albums.length > 0 && (
         albums.map((album, index) => {
           return (
           <div className="album-container" key={index}>
             <div className="album-header">
-              <h2>
+              <span className="album-title">
                 {album.title}
-              </h2>
+              </span>
               <div>
                 Id : {album.id}
                 userid : {album.userId}

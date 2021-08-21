@@ -2,14 +2,27 @@
     display: flex;
     flex-direction: column;
     margin: 10px;
+    background-color: #fff;
+}
+
+.album-container {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-bottom: 20px;
     border : 1px solid black;
 }
 
 .album-header {
-    padding: 10px;
-    border-bottom: 1px solid gray;
+    padding: 15px 10px;
+    border-bottom: 1px solid #ebebec;
+    text-align: left;
 }
 .album-detail {
+    padding: 10px;
     display: flex;
     overflow: auto;
+}
+.album-title {
+    display: block;
+    font-size: 24px;
+    margin-bottom: 10px;
 }

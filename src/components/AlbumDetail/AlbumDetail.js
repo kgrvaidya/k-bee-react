@@ -35,12 +35,12 @@ const AlbumDetail =  (props) => {
           return (
           <div className="album-info-container" key={index}>
             <img className="album-cover" src={album.thumbnailUrl} alt={album.title} />
-            <h4>
+            <span className="detail-text">
               {album.title}
-            </h4>
-            <h4>
-              {album.id}
-            </h4>
+            </span>
+            <span className="detail-text">
+              Id : {album.id}
+            </span>
           </div>)
         })
       )}
